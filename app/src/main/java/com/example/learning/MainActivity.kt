@@ -1,7 +1,9 @@
 package com.example.learning
 
+import android.app.Dialog
 import android.os.Bundle
 import android.view.Menu
+import androidx.appcompat.app.AlertDialog
 import com.google.android.material.snackbar.Snackbar
 import com.google.android.material.navigation.NavigationView
 import androidx.navigation.findNavController
@@ -27,9 +29,16 @@ class MainActivity : AppCompatActivity() {
         setSupportActionBar(binding.appBarMain.toolbar)
 
         binding.appBarMain.fab.setOnClickListener { view ->
-            Snackbar.make(view, "dzeno", Snackbar.LENGTH_LONG)
-                .setAction("Action", null).show()
+            val builder = AlertDialog.Builder(this)
+            builder.setTitle("Dialog Title")
+            builder.setMessage("dzeno")
+            builder.setPositiveButton("OK") { dialog, which ->
+                dialog.dismiss()
+            }
+            val dialog: AlertDialog = builder.create()
+            dialog.show()
         }
+
         val drawerLayout: DrawerLayout = binding.drawerLayout
         val navView: NavigationView = binding.navView
         val navController = findNavController(R.id.nav_host_fragment_content_main)
