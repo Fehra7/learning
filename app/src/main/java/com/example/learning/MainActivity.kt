@@ -30,8 +30,8 @@ class MainActivity : AppCompatActivity() {
 
         binding.appBarMain.fab.setOnClickListener { view ->
             val builder = AlertDialog.Builder(this)
-            builder.setTitle("Dialog Title")
-            builder.setMessage("dzeno")
+            builder.setTitle("Pop up window")
+            builder.setMessage("Dzeno")
             builder.setPositiveButton("OK") { dialog, which ->
                 dialog.dismiss()
             }
