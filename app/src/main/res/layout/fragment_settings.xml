@@ -1,49 +1,26 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:gravity="center_horizontal"
     tools:context=".ui.settings.SettingsFragment">
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.settings.SettingsFragment"
+    android:orientation="vertical"
+    android:gravity="center_horizontal" >
 
+    <Switch
+        android:id="@+id/btn_switch"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:text="Notification"
+        android:textSize="20sp"
+        android:theme="@style/mySwitch"
+        tools:ignore="UseSwitchCompatOrMaterialXml" />
 
-    <Switch
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="10dp"
-        android:checked="true"
-        android:text="WiFi"
-        android:textSize="20sp"
-        android:theme="@style/mySwitch"
-        tools:ignore="UseSwitchCompatOrMaterialXml" />
-    <Switch
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="10dp"
-        android:checked="true"
-        android:text="Mobile Data"
-        android:textSize="20sp"
-        android:theme="@style/mySwitch"
-        tools:ignore="UseSwitchCompatOrMaterialXml" />
-    <Switch
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="10dp"
-        android:checked="true"
-        android:text="Sound"
-        android:textSize="20sp"
-        android:theme="@style/mySwitch"
-        tools:ignore="UseSwitchCompatOrMaterialXml" />
-    <Switch
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="10dp"
-        android:checked="true"
-        android:text="Vibration"
-        android:textSize="20sp"
-        android:theme="@style/mySwitch"
-        tools:ignore="UseSwitchCompatOrMaterialXml" />
     <View
         android:layout_width="match_parent"
         android:layout_height="0dp"
@@ -56,6 +33,6 @@
         android:text="Button"
         android:textColor="@color/white"
         />
+ </LinearLayout>
 
-
-</LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
