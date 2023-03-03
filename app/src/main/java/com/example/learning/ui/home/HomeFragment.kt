@@ -3,18 +3,13 @@ package com.example.learning.ui.home
 import android.annotation.SuppressLint
 import android.content.Context
 import android.os.Bundle
-import android.util.Log
-import android.view.LayoutInflater
 import android.view.MotionEvent
 import android.view.View
-import android.view.ViewGroup
 import android.widget.TextView
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.ViewModelProvider
 import com.example.learning.R
 import com.example.learning.databinding.FragmentHomeBinding
-import com.example.learning.ui.settings.SettingsViewModel
 import com.example.learning.ui.viewBinding
 
 @Suppress("NAME_SHADOWING")

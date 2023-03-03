@@ -7,7 +7,9 @@ import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.Observer
 import androidx.viewbinding.ViewBinding
+import com.example.learning.databinding.FragmentSlideshowBinding
 import kotlin.properties.ReadOnlyProperty
+import kotlin.reflect.KFunction1
 import kotlin.reflect.KProperty
 
 class FragmentViewBindingDelegate<T : ViewBinding>(
