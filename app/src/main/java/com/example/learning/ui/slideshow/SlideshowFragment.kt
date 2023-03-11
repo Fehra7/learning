@@ -1,5 +1,8 @@
+@file:Suppress("SameParameterValue")
+
 package com.example.learning.ui.slideshow
 
+import android.content.Context
 import android.os.Bundle
 import android.view.View
 import android.view.ViewGroup
@@ -11,13 +14,12 @@ import com.example.learning.R
 import com.example.learning.R.*
 import com.example.learning.R.string.*
 import com.example.learning.databinding.FragmentSlideshowBinding
+import com.example.learning.ui.home.HomeFragment
 import com.example.learning.ui.settings.SettingsViewModel
 import com.example.learning.ui.viewBinding
 
 class SlideshowFragment : Fragment(layout.fragment_slideshow) {
-    private val titleList = mutableListOf<String>()
-    private val descriptionList = mutableListOf<String>()
-    private val imageList = mutableListOf<Int>()
+    private val upgradeModelList = mutableListOf<UpgradeModel>()
 
     private val binding by viewBinding(FragmentSlideshowBinding::bind)
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -25,14 +27,17 @@ class SlideshowFragment : Fragment(layout.fragment_slideshow) {
 
         postToList()
 
+        val sharedPreferences = requireActivity().getPreferences(Context.MODE_PRIVATE)
         val recyclerView = view.findViewById<RecyclerView>(R.id.rv_recyclerView)
         recyclerView.layoutManager = LinearLayoutManager(requireContext())
-        recyclerView.adapter = MyAdapter(titleList, descriptionList, imageList)
+        var currentMultiplier = sharedPreferences.getInt("multiplier", 0)
+        recyclerView.adapter = MyAdapter(upgradeModelList) {multiplier ->
+            currentMultiplier += multiplier
+            sharedPreferences.edit().putInt("multiplier", currentMultiplier).apply()
+        }
     }
     private fun addToList(title: String, description: String, image: Int){
-        titleList.add(title)
-        descriptionList.add(description)
-        imageList.add(image)
+        upgradeModelList.add(UpgradeModel(title, description, image))
     }
     private fun postToList(){
         for(i in 1..4){
