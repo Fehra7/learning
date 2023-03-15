@@ -16,28 +16,28 @@ import com.example.learning.ui.viewBinding
 class HomeFragment : Fragment(R.layout.fragment_home) {
     private val binding by viewBinding(FragmentHomeBinding::bind)
     private lateinit var touchCounter: TextView
-    private var count = 0
+    private var balance = 0
     private var multiplier = 0
 
-    @SuppressLint("ClickableViewAccessibility")
+    @SuppressLint("ClickableViewAccessibility", "SetTextI18n")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         val settingsViewModel =
             ViewModelProvider(this).get(HomeViewModel::class.java)
         val sharedPreferences = requireActivity().getPreferences(Context.MODE_PRIVATE)
-        count = sharedPreferences.getInt("count", 0)
+        balance = sharedPreferences.getInt("balance", 0)
         multiplier = sharedPreferences.getInt("multiplier", 0)
 
-        touchCounter = binding.touchCounter
-        touchCounter.text = count.toString()
+        touchCounter = binding.balance
+        touchCounter.text = "$balance $"
 
         binding.root.setOnTouchListener { _, event ->
             when (event.action) {
                 MotionEvent.ACTION_DOWN -> {
-                    count+= multiplier + 1
-                    touchCounter.text = count.toString()
+                    balance += multiplier + 1
+                    touchCounter.text = "$balance $"
                     val sharedPreferences = requireActivity().getPreferences(Context.MODE_PRIVATE)
-                    sharedPreferences.edit().putInt("count", count).apply()
+                    sharedPreferences.edit().putInt("balance", balance).apply()
                 }
             }
             true
